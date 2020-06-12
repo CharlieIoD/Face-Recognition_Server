@@ -36,17 +36,6 @@ app.put('/image', (req, res) => {image.handleImage(req, res, db)})
 
 app.post('/imageurl', (req, res) => {image.handleApiCall(req, res)})
 
-app.listen(3000, () => {
-    console.log('app is running on port 3000');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`app is running on port ${process.env.PORT}`);
 })
-
-function newFunction(req, res) {
-    if (req.body.email === database.users[0].email &&
-        req.body.password === database.users[0].password) {
-        res.json(database.users[0]);
-    }
-    else {
-        res.status(400).json('Error logging in!');
-    }
-}
-
