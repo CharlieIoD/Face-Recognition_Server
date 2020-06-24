@@ -24,7 +24,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {res.send(database.users)})
+app.get('/', (req, res) => {res.send('It is Working!')})
 
 app.post('/signin', signin.handleSignin(db, bcrypt))
 
@@ -38,7 +38,7 @@ app.post('/image', (req, res) => {image.handleApiCall(req, res)})
 
 // const DATABASE_URL = process.env.DATABASE_URL
 
-app.listen(3000, () =>{
-    console.log('Server is running on port 3000');
+app.listen(process.env.PORT || 3000, () =>{
+    console.log(`Server is running on port ${process.env.PORT}`);
 })
 
